@@ -7,6 +7,9 @@ class Passenger:
         self.destination = destination
         self.date = date
 
+    def get_weight_allowance(self):
+        return 20
+
     def common_method(self):
         return f"Common action: (self.name)"
 
@@ -20,6 +23,8 @@ class Business(Passenger):
         super().__init__(name, location, destination, date)
         self.lounge_pass_code = self.lounge_pass_code
 
+    def get_weight_allowance(self):
+        return 100
 
     def specific_method(self):
         return f"Specific action: (self.seat)"
