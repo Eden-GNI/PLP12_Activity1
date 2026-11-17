@@ -79,3 +79,49 @@ class First_Class(Passenger):
 
 
 #Add FIrst class Code here
+
+
+def dynamic_data_entry():
+    print("\n===== AIRLINE TICKET BOOKING =====")
+    print("1. Economy Class")
+    print("2. Business Class")
+    print("3. First Class")
+
+    while True:
+        choice = input("Select ticket class (1-3): ").strip()
+        if choice in ["1", "2", "3"]:
+            break
+        print("Invalid choice. Please select 1, 2, or 3.")
+
+    print("\n===== PASSENGER DETAILS =====")
+
+    name = input("Enter passenger name: ").strip()
+    location = input("Enter departure location: ").strip()
+    destination = input("Enter destination: ").strip()
+    date = input("Enter travel date: ").strip()
+
+    if choice == "1":
+        seat = input("Enter seat preference: ")
+        passenger = Economy(name, location, destination, date, seat)
+
+    elif choice == "2":
+        lounge_code = input("Enter lounge pass code: ")
+        passenger = Business(name, location, destination, date, lounge_code)
+
+    else:
+        suite = input("Enter suite number: ")
+        chauffeur = input("Require chauffeur service? (Yes/No): ").strip().lower()
+
+        passenger = First_Class(
+            name, location, destination, date,
+            suite, chauffeur == "yes"
+        )
+
+    print("\n===== BOOKING SUMMARY =====")
+    print(passenger.get_passenger_info())
+
+    return passenger
+
+
+if __name__ == "__main__":
+    dynamic_data_entry()
