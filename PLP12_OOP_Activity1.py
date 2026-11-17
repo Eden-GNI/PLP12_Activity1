@@ -7,6 +7,15 @@ class Passenger:
         self.destination = destination
         self.date = date
 
+    def get_passenger_info(self):
+        return (
+            f"Name: {self.name}\n"
+            f"From: {self.location}\n"
+            f"To: {self.destination}\n"
+            f"Date: {self.date}\n"
+            f"Weight allowance: {self.get_weight_allowance()} kg"
+        )
+
     def get_weight_allowance(self):
         return 20
 
@@ -18,6 +27,9 @@ class Economy(Passenger):
         super().__init__(name, location, destination, date)
         self.seat_preference = self.seat_preference
 
+    def get_passenger_info(self):
+        return super().get_passenger_info() + f"\nSeat preference: {self.seat_preference}"
+
 class Business(Passenger):
     def __init__(self, name, location, destination, date, lounge_pass_code):
         super().__init__(name, location, destination, date)
@@ -25,6 +37,9 @@ class Business(Passenger):
 
     def get_weight_allowance(self):
         return 100
+
+    def get_passenger_info(self):
+        return super().get_passenger_info() + f"\nLounge pass code: {self.lounge_pass_code}"
 
     def specific_method(self):
         return f"Specific action: (self.seat)"
@@ -34,6 +49,13 @@ class First_Class(Passenger):
         super().__init__(name, location, destination, date)
         self.suite_number = suite_number
         self.chauffeur_service
+
+    def get_passenger_info(self):
+        return (
+            super().get_passenger_info()
+            + f"\nSuite number: {self.suite_number}"
+            + f"\nChauffeur service: {self.chauffeur_service}"
+        )
 
     def specific_method(self):
         return f"Specific action: (self.menu)"
@@ -64,3 +86,23 @@ def get_business_details():
         if code:
             return code
         print("  Error: this field cannot be empty. Please try again.")
+
+#Add the prompt code here
+
+
+
+
+
+#Add economy code here
+
+
+
+
+
+#Add business code here
+
+
+
+
+
+#Add FIrst class Code here
