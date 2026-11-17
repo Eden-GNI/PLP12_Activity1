@@ -65,12 +65,6 @@ class First_Class(Passenger):
     def specific_method(self):
         return f"Specific action: (self.menu)"
 
-#Add the prompt code here
-
-
-
-
-
 #Add economy code here
 
 
@@ -78,7 +72,40 @@ class First_Class(Passenger):
 
 
 
-#Add FIrst class Code here
+# Add First Class Code here
+
+print("\n--- FIRST CLASS PASSENGER ---")
+
+name = input("Enter passenger name: ").strip()
+location = input("Enter departure location: ").strip()
+destination = input("Enter destination: ").strip()
+date = input("Enter travel date: ").strip()
+
+while True:
+    suite_number = input("Enter suite number: ").strip()
+    if suite_number:
+        break
+    print("Error: this field cannot be empty. Please try again.")
+
+while True:
+    chauffeur_service = input("Chauffeur service (Yes/No): ").strip()
+    if chauffeur_service.lower() in ["yes", "no"]:
+        break
+    print("Error: Please enter Yes or No.")
+
+first_class_passenger = First_Class(
+    name,
+    location,
+    destination,
+    date,
+    suite_number,
+    chauffeur_service
+)
+
+print("\n--- FIRST CLASS PASSENGER DETAILS ---")
+print(first_class_passenger.get_passenger_info())
+
+print(first_class_passenger.specific_method())
 
 
 def dynamic_data_entry():
