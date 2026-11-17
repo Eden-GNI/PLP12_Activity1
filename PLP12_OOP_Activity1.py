@@ -41,13 +41,6 @@ class Business(Passenger):
     def get_passenger_info(self):
         return super().get_passenger_info() + f"\nLounge pass code: {self.lounge_pass_code}"
 
-    def get_business_details(self):
-
-    while True:
-        code = input("Lounge pass code: ").strip()
-        if code:
-            return code
-        print(" Error: this field cannot be empty. Please try again.")
 
 class First_Class(Passenger):
     def __init__(self, name, location, destination, date, suite_number, chauffeur_service):
@@ -61,68 +54,6 @@ class First_Class(Passenger):
             + f"\nSuite number: {self.suite_number}"
             + f"\nChauffeur service: {self.chauffeur_service}"
         )
-
-    def specific_method(self):
-        return f"Specific action: (self.menu)"
-
-print("\n--- ECONOMY PASSENGER ---")
-
-name = input("Enter passenger name: ").strip()
-location = input("Enter departure location: ").strip()
-destination = input("Enter destination: ").strip()
-date = input("Enter travel date: ").strip()
-
-while True:
-    seat_preference = input("Enter seat preference: ").strip()
-    if seat_preference:
-        break
-    print("Error: this field cannot be empty. Please try again.")
-
-economy_passenger = Economy(
-    name,
-    location,
-    destination,
-    date,
-    seat_preference
-)
-
-print("\n--- ECONOMY PASSENGER DETAILS ---")
-print(economy_passenger.get_passenger_info())
-print(economy_passenger.common_method())
-
-print("\n--- FIRST CLASS PASSENGER ---")
-
-name = input("Enter passenger name: ").strip()
-location = input("Enter departure location: ").strip()
-destination = input("Enter destination: ").strip()
-date = input("Enter travel date: ").strip()
-
-while True:
-    suite_number = input("Enter suite number: ").strip()
-    if suite_number:
-        break
-    print("Error: this field cannot be empty. Please try again.")
-
-while True:
-    chauffeur_service = input("Chauffeur service (Yes/No): ").strip()
-    if chauffeur_service.lower() in ["yes", "no"]:
-        break
-    print("Error: Please enter Yes or No.")
-
-first_class_passenger = First_Class(
-    name,
-    location,
-    destination,
-    date,
-    suite_number,
-    chauffeur_service
-)
-
-print("\n--- FIRST CLASS PASSENGER DETAILS ---")
-print(first_class_passenger.get_passenger_info())
-
-print(first_class_passenger.specific_method())
-
 
 def dynamic_data_entry():
     print("\n===== AIRLINE TICKET BOOKING =====")
