@@ -19,9 +19,6 @@ class Passenger:
     def get_weight_allowance(self):
         return 20
 
-    def common_method(self):
-        return f"Common action: (self.name)"
-
 class Economy(Passenger):
     def __init__(self, name, location, destination, date, seat_preference):
         super().__init__(name, location, destination, date)
@@ -42,7 +39,7 @@ class Business(Passenger):
         return super().get_passenger_info() + f"\nLounge pass code: {self.lounge_pass_code}"
 
 
-class First_Class(Passenger):
+class FirstClass(Passenger):
     def __init__(self, name, location, destination, date, suite_number, chauffeur_service):
         super().__init__(name, location, destination, date)
         self.suite_number = suite_number
@@ -54,6 +51,13 @@ class First_Class(Passenger):
             + f"\nSuite number: {self.suite_number}"
             + f"\nChauffeur service: {self.chauffeur_service}"
         )
+
+def get_non_empty_input(prompt):
+    while True:
+        value = input(prompt).strip()
+        if value:
+            return value
+        print("Input cannot be empty. Please try again.")
 
 def dynamic_data_entry():
     print("\n===== AIRLINE TICKET BOOKING =====")
@@ -69,33 +73,28 @@ def dynamic_data_entry():
 
     print("\n===== PASSENGER DETAILS =====")
 
-    name = input("Enter passenger name: ").strip()
-    location = input("Enter departure location: ").strip()
-    destination = input("Enter destination: ").strip()
-    date = input("Enter travel date: ").strip()
+    name = get_non_empty_input("Enter passenger name: ")
+    location = get_non_empty_input("Enter departure location: ")
+    destination = get_non_empty_input("Enter destination: ")
+    date = get_non_empty_input("Enter travel date: ")
 
     if choice == "1":
-        seat = input("Enter seat preference: ")
-        passenger = Economy(name, location, destination, date, seat)
+       seat = get_non_empty_input("Enter seat preference: ")
+       passenger = Economy(name, location, destination, date, seat)
 
     elif choice == "2":
-        lounge_code = input("Enter lounge pass code: ")
-        passenger = Business(name, location, destination, date, lounge_code)
+       lounge_code = get_non_empty_input("Enter lounge pass code: ")
+       passenger = Business(name, location, destination, date, lounge_code)
 
     else:
-        suite = input("Enter suite number: ")
-        chauffeur = input("Require chauffeur service? (Yes/No): ").strip().lower()
-
-        passenger = First_Class(
-            name, location, destination, date,
-            suite, chauffeur == "yes"
-        )
+       suite = get_non_empty_input("Enter suite number: ")
+       chauffeur = get_yes_no("Require chauffeur service? (Yes/No): ")
+       passenger = FirstClass(name, location, destination, date, suite, chauffeur)
 
     print("\n===== BOOKING SUMMARY =====")
     print(passenger.get_passenger_info())
 
     return passenger
-
 
 if __name__ == "__main__":
     dynamic_data_entry()
