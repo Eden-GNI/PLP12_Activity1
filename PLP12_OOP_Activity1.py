@@ -65,14 +65,30 @@ class First_Class(Passenger):
     def specific_method(self):
         return f"Specific action: (self.menu)"
 
-#Add economy code here
+print("\n--- ECONOMY PASSENGER ---")
 
+name = input("Enter passenger name: ").strip()
+location = input("Enter departure location: ").strip()
+destination = input("Enter destination: ").strip()
+date = input("Enter travel date: ").strip()
 
+while True:
+    seat_preference = input("Enter seat preference: ").strip()
+    if seat_preference:
+        break
+    print("Error: this field cannot be empty. Please try again.")
 
+economy_passenger = Economy(
+    name,
+    location,
+    destination,
+    date,
+    seat_preference
+)
 
-
-
-# Add First Class Code here
+print("\n--- ECONOMY PASSENGER DETAILS ---")
+print(economy_passenger.get_passenger_info())
+print(economy_passenger.common_method())
 
 print("\n--- FIRST CLASS PASSENGER ---")
 
