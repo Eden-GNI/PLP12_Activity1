@@ -41,13 +41,13 @@ class Business(Passenger):
     def get_passenger_info(self):
         return super().get_passenger_info() + f"\nLounge pass code: {self.lounge_pass_code}"
 
-    def get_business_details():
+    def get_business_details(self):
 
     while True:
         code = input("Lounge pass code: ").strip()
         if code:
             return code
-        print("  Error: this field cannot be empty. Please try again.")
+        print(" Error: this field cannot be empty. Please try again.")
 
 class First_Class(Passenger):
     def __init__(self, name, location, destination, date, suite_number, chauffeur_service):
